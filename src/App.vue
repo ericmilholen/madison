@@ -13,7 +13,11 @@
 export default {}
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
+
+* { font-family: 'Montserrat Alternates', sans-serif !important; }
+
 #nav a {
 	font-weight: bold;
 	color: #2c3e50;

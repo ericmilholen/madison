@@ -1,65 +1,19 @@
 <script>
 	// [IMPORT] //
-	import { Line } from 'vue-chartjs'
+	import { Line, mixins } from 'vue-chartjs'
 
 	// [EXPORT] //
 	export default {
-		mixins: [Line],
+		extends: Line,
+		
+		mixins: [mixins.reactiveProp],
 
-		props: {
-			labels: {
-				type: Array,
-				required: true,
-			},
+		props: ['chartData', 'options'],
 
-			data: {
-				type: Array,
-				required: true
-			},
-		},
-
-		mounted() {
-			// Render the Chart //
-			this.renderChart(
-				{
-					labels: this.labels,
-					datasets: [
-						{
-							data: this.data,
-							backgroundColor: '#f45d223f',
-							borderColor: '#f45d22',
-						}
-					]
-				},
-				{
-					elements: { line: { tension: 0 } },
-					legend: { display: false, },
-					maintainAspectRatio: false,
-					responsive: true,
-					scales: {
-						yAxes: [
-							{
-								ticks: {
-									fontColor: 'white',
-									fontSize: 12,
-									stepSize: 1,
-									beginAtZero: false
-								}
-							}
-						],
-						xAxes: [
-							{
-								ticks: {
-									fontColor: 'white',
-									fontSize: 10,
-									stepSize: 1,
-									beginAtZero: false
-								}
-							}
-						]
-					}
-				},
-			)
+		mounted () {
+			// this.chartData is created in the mixin.
+			// If you want to pass options please create a local options object
+			this.renderChart(this.chartData, this.options)
 		},
 	}
 </script>

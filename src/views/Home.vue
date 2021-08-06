@@ -1,59 +1,22 @@
 <template>
 	<div class="home">
+		<StockTracker :data="data" class="mx-auto" />
 	</div>
 </template>
 
 <script>
+	import StockTracker from '../components/widgets/StockTracker'
+	import data from '../defaults/data'
 
-export default {
-	name: 'Home',
-	components: {
-		HelloWorld
-	},
-
-	data() {
-		return {}
-	},
-
-	methods: {
-		getTenDaysAgoUnix() {
-			var tenDaysAgo = new Date()
-			tenDaysAgo.setDate(tenDaysAgo.getDate() - 10)
-
-			console.log('ten days ago:', tenDaysAgo.getTime());
-			return tenDaysAgo.getTime()
+	export default {
+		components: {
+			StockTracker
 		},
 
-		getNowUnix() {
-			console.log('now', Date.now());
-			return Date.now()
+		data() {
+			return {
+				data: data,
+			}
 		},
-
-		getStockData() {
-			const finnhub = require('finnhub')
-	
-			const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-			api_key.apiKey = "c46p04aad3iagvmhcglg"
-	
-			const finnhubClient = new finnhub.DefaultApi()
-	
-			finnhubClient.stockCandles(
-				"AAPL",
-				"D",
-				1590988249, //this.getTenDaysAgoUnix(),
-				1591852249, //this.getNowUnix(),
-				{},
-				(error, data, response) => {
-					console.log(data),
-	
-					console.log(response);
-				}
-			)
-		},
-	},
-
-	created() {
-		this.getStockData()
 	}
-}
 </script>
