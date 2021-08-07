@@ -4,10 +4,10 @@
 			<BCol cols="12">
 				<WrappedLineChart
 					title="AAPL"
-					:labels="data.labels"
-					:data="data.closes"
-					:change="data.change"
-					:pct="data.pct"
+					:labels="data.stockInfo.labels"
+					:data="data.stockInfo.closes"
+					:change="data.stockInfo.change"
+					:pct="data.stockInfo.pct"
 					class="h-100"
 				/>
 			</BCol>
@@ -21,12 +21,12 @@
 					<BCard no-body bg-variant="light" border-variant="white">
 						<BRow>
 							<BCol cols="6" class="px-0 py-3 border-right border-white">
-								<h3 class="text-center font-weight-bold">{{ data.sharesTraded }} M</h3>
+								<h3 class="text-center font-weight-bold">{{ data.stockInfo.sharesTraded }} M</h3>
 								<h6 class="text-center">Shares Traded</h6>
 							</BCol>
 
 							<BCol cols="6" class="px-0 py-3 border-left border-white">
-								<h3 class="text-center font-weight-bold">{{ data.marketCap }} M</h3>
+								<h3 class="text-center font-weight-bold">{{ data.stockInfo.marketCap }} M</h3>
 								<h6 class="text-center">Market Cap.</h6>
 							</BCol>
 						</BRow>
@@ -39,14 +39,14 @@
 							<h6 class="small">Yearly Change</h6>
 
 							<WrappedBarChart
-								:labels="data.barChartLabels"
-								:data="data.barChartData"
+								:labels="data.barChart.labels"
+								:data="data.barChart.data"
 							/>
 						</BCol>
 
 						<BCol cols="5">
 							<h6 class="small text-center">Yearly Change</h6>
-							<BBadge variant="success" class="w-100 py-2"><h2 class="m-0">+ {{ data.pct }}</h2></BBadge>
+							<BBadge variant="success" class="w-100 py-2"><h2 class="m-0">+ {{ data.stockInfo.pct }}</h2></BBadge>
 						</BCol>
 					</BRow>
 				</div>
