@@ -1,5 +1,5 @@
 <template>
-	<VueApexCharts type="donut" :options="options" :series="series"></VueApexCharts>
+	<VueApexCharts type="donut" :options="options" :series="series" />
 </template>
 
 <script>
@@ -9,7 +9,12 @@
 			total: {
 				required: true,
 				type: Number,
-			}
+			},
+
+			series: {
+				required: true,
+				type: Array,
+			},
 		},
 
 		components: {
@@ -19,6 +24,9 @@
 		data() {
 			return {
 				options: {
+					legend: {
+						show: false,
+					},
 					plotOptions: {
 						pie: {
 							donut: {
@@ -34,7 +42,6 @@
 						}
 					}
 				},
-				series: [44, 55, 41, 17, 15]
 			}
 		},
 	}
